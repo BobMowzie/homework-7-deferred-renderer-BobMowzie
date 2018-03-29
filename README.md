@@ -2,6 +2,8 @@
 
 ![](preview.png)
 
+https://github.com/BobMowzie/homework-7-deferred-renderer-BobMowzie-forked.git
+
 My deferred rendering pipeline uses GBuffers to pass information from a standard shader, to a deferred rendering shader, to a number of post-processing shaders. With this pipeline, I can achieve a number of interesting effects.
 
 # Bloom
