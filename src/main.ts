@@ -42,6 +42,12 @@ function loadOBJText() {
   obj0 = readTextFile('../resources/obj/wahoo.obj')
 }
 
+const controls = {
+  bloom: 1,
+  dof: 1,
+  tonemap: 1,
+  sketch: 1,
+};
 
 function loadScene() {
   square && square.destroy();
@@ -68,6 +74,10 @@ function main() {
 
   // Add controls to the gui
   // const gui = new DAT.GUI();
+  // gui.add(controls, 'bloom', { Off: 0, On: 1 });
+  // gui.add(controls, 'dof', { Off: 0, On: 1 });
+  // gui.add(controls, 'tonemap', { Off: 0, On: 1 });
+  // gui.add(controls, 'sketch', { Off: 0, On: 1 });
 
   // get canvas and webgl context
   const canvas = <HTMLCanvasElement> document.getElementById('canvas');
@@ -101,6 +111,7 @@ function main() {
     gl.viewport(0, 0, window.innerWidth, window.innerHeight);
     timer.updateTime();
     renderer.updateTime(timer.deltaTime, timer.currentTime);
+    renderer.post32Passes
 
     standardDeferred.bindTexToUnit("tex_Color", tex0, 0);
 

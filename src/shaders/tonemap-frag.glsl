@@ -7,6 +7,13 @@ out vec4 out_Col;
 uniform sampler2D u_frame;
 uniform float u_Time;
 
+vec4 reinhard(vec3 texColor)
+{
+   texColor *= 16.;  // Hardcoded Exposure Adjustment
+   texColor = texColor/(1. + texColor);
+   vec3 retColor = vec3(pow(texColor.r, 1./2.2), pow(texColor.g, 1./2.2), pow(texColor.b, 1./2.2));
+   return vec4(retColor, 1.);
+}
 
 void main() {
 	// TODO: proper tonemapping
@@ -15,9 +22,7 @@ void main() {
 	// It does not properly handle HDR values; you must implement that.
 
 	vec3 color = texture(u_frame, fs_UV).xyz;
-	color = min(vec3(1.0), color);
-
-	// gamma correction
-	color = pow(color, vec3(1.0 / 2.2));
-	out_Col = vec4(color, 1.0);
+	
+	out_Col = reinhard(color);
+	out_Col = vec4(color, 1.);
 }

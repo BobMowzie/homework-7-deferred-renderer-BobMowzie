@@ -13,6 +13,7 @@ in vec4 vs_Col;
 in vec2 vs_UV;
 
 out vec4 fs_Pos;
+out float fs_Depth;
 out vec4 fs_Nor;            
 out vec4 fs_Col;           
 out vec2 fs_UV;
@@ -27,7 +28,10 @@ void main()
     mat3 invTranspose = mat3(u_ModelInvTr);
     mat3 view = mat3(u_View);
     fs_Nor = vec4(view * invTranspose * vec3(vs_Nor), 0);
-    fs_Pos = u_View * u_Model * vs_Pos;
+    vec4 pos = u_View * u_Model * vs_Pos;
+    fs_Pos = pos;
+    vec4 pos2 = (pos * u_Proj)/pos.w;
+    fs_Depth = pos2.z;
     
     gl_Position = u_Proj * u_View * u_Model * vs_Pos;
 }

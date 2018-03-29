@@ -2,6 +2,7 @@
 precision highp float;
 
 in vec4 fs_Pos;
+in float fs_Depth;
 in vec4 fs_Nor;
 in vec4 fs_Col;
 in vec2 fs_UV;
@@ -26,7 +27,7 @@ void main() {
     // if using textures, inverse gamma correct
     col = pow(col, vec3(2.2));
 
-    fragColor[0] = vec4(0.0);
+    fragColor[0] = vec4(fs_Nor.xyz, fs_Depth);
     fragColor[1] = vec4(0.0);
     fragColor[2] = vec4(col, 1.0);
 }
