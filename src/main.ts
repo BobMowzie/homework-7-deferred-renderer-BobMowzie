@@ -39,7 +39,7 @@ var timer = {
 
 
 function loadOBJText() {
-  obj0 = readTextFile('./src/resources/obj/wahoo.obj')
+  obj0 = readTextFile('/resources/obj/wahoo.obj')
 }
 
 const controls = {
@@ -59,7 +59,7 @@ function loadScene() {
   mesh0 = new Mesh(obj0, vec3.fromValues(0, 0, 0));
   mesh0.create();
 
-  tex0 = new Texture('./src/resources/textures/wahoo.bmp')
+  tex0 = new Texture('/resources/textures/wahoo.bmp')
 }
 
 
